@@ -1,18 +1,26 @@
-# Aashi Birthday Website
+# Aashi Birthday Surprise ❤️
+
+A React + Vite birthday surprise with a midnight IST countdown, a temporary test button, animated scenes, a letter, portrait gallery, wishes, and soft generated melody.
 
 ## Run locally
-1. Install Node.js (LTS).
-2. Extract this folder and run `npm install`.
-3. Run `npm run dev` and open the local URL shown.
 
-## Add photos
-Put four images in `public/photos/` named `photo1.jpg`, `photo2.jpg`, `photo3.jpg`, and `photo4.jpg`. You can use `.jpg` images; update the `photos` array in `src/main.jsx` if using other filenames.
+```bash
+npm install
+npm run dev
+```
 
-## Midnight reveal
-The countdown/reveal is set for **October 3, 2026 at 12:00 AM India Standard Time**. It uses a fixed IST target. After that moment, the birthday page stays revealed.
+## Photos
 
-## Music
-The page includes a quiet, original synthesized melody. Browsers require a user tap before sound can play, so the visitor can tap “Play soft melody.” Volume is intentionally low.
+Place the seven portrait photos in `public/photos/` and name them `1.jpeg` through `7.jpeg`. The original photos are not bundled in this archive; copy them from your existing project folder.
 
-## Deploy to Netlify
-Push the project to GitHub and import it in Netlify. Build command: `npm run build`. Publish directory: `dist`.
+## Countdown and testing
+
+The reveal target is October 3, 2026, 12:00 AM India Standard Time. The **Test the surprise** button temporarily bypasses the countdown for testing. Before public deployment, remove the `testReveal` state, remove the test button, and change `ready` to `left === 0` in `src/main.jsx`.
+
+## Build
+
+```bash
+npm run build
+```
+
+For Netlify, use build command `npm run build` and publish directory `dist`.

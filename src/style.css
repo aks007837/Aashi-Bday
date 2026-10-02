@@ -63,3 +63,34 @@
 @media (prefers-reduced-motion: reduce) {
   .scene, .cta::after, .ambient i, .photo-card, .wish-card { animation:none !important; transition:none !important; }
 }
+
+/* Final mobile-first layout and envelope overflow fix */
+html, body, #root { width:100%; min-height:100%; margin:0; }
+body { min-width:320px; overflow-x:hidden; }
+.app { width:100%; max-width:100%; overflow-x:clip; }
+.screen { width:100%; min-width:0; }
+.experience { align-items:center; }
+.scene { display:flex; flex-direction:column; align-items:center; width:100%; min-width:0; }
+.scene > * { max-width:100%; }
+.envelope-art { width:min(210px, 72vw); height:auto; aspect-ratio:210 / 145; margin:12px auto 28px; flex:0 0 auto; }
+.letter-paper { left:7.6%; width:84.8%; height:77.2%; max-width:100%; font-size:clamp(10px, 3vw, 12px); }
+.env-body { inset:13.8% 0 0; }
+.env-flap { inset:13.8% 0 auto; height:69%; }
+.seal { top:45%; left:50%; transform:translateX(-50%); font-size:clamp(25px, 8vw, 32px); }
+.envelope-art.is-open .letter-paper { animation:letter-rise-mobile .75s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes letter-rise-mobile { from { transform:translateY(12px); } to { transform:translateY(-18px); } }
+.test-button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:46px; margin-top:16px; padding:12px 18px; border:1px solid #ffffff30; border-radius:999px; background:#ffffff10; color:#f9eaf2; font-size:12px; touch-action:manipulation; }
+.photo-grid { grid-template-columns:repeat(2,minmax(0,1fr)); width:100%; }
+.photo-card { min-width:0; }
+.photo-card img { width:100%; aspect-ratio:3/4; object-fit:cover; }
+@media (max-width:600px) {
+  header { width:100%; padding-inline:12px; }
+  .screen { padding:20px 14px 28px; }
+  .scene h1, .countdown h1 { max-width:100%; overflow-wrap:break-word; font-size:clamp(32px,9vw,46px); }
+  .note { width:100%; max-width:100%; overflow-wrap:anywhere; }
+  .photo-grid { gap:10px; }
+  .photo-card figcaption { overflow-wrap:anywhere; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .envelope-art.is-open .letter-paper { animation:none; }
+}

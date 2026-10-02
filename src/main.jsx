@@ -23,16 +23,13 @@ const wishes = [
   },
   {
     title: "A promise from your sibling",
-    text: "No matter how grown-up life gets, you will always have some people in your corner. That some people includes us .",
+    text: "No matter how grown-up life gets, you will always have someone in your corner. That someone is me.",
   },
 ];
 function App() {
   const [now, setNow] = useState(Date.now());
   const [step, setStep] = useState(0);
   const [music, setMusic] = useState(false);
-  const [preview, setPreview] = useState(
-    new URLSearchParams(location.search).get("preview") === "1",
-  );
   const [opened, setOpened] = useState(false);
   const audio = useRef(null);
   useEffect(() => {
@@ -40,7 +37,7 @@ function App() {
     return () => clearInterval(t);
   }, []);
   const left = Math.max(0, TARGET - now),
-    ready = left === 0 || preview;
+    ready = left === 0;
   const time = [
     Math.floor(left / 86400000),
     Math.floor((left % 86400000) / 3600000),
@@ -103,7 +100,7 @@ function App() {
       </div>
       <header>
         <div className="logo">
-          <span>✿</span> For my own Ashika ❤️{" "}
+          <span>✿</span> A little birthday surprise for Aashi❤️
         </div>
         <button className="sound" onClick={toggleMusic}>
           {music ? <Volume2 size={15} /> : <Music2 size={15} />}
@@ -120,7 +117,6 @@ function App() {
             <em>is almost here.</em>
           </h1>
           <p className="intro">For my dearest Aashi ❤️, with all our love.</p>
-          <p className="intro">From your Ritika didi and Ankit Bhaiya</p>
           <div className="clock">
             {time.map((n, i) => (
               <div className="clock-unit" key={i}>
@@ -130,7 +126,6 @@ function App() {
             ))}
           </div>
           <p className="tiny">The surprise opens at midnight, India time.</p>
-          <button className="text-link" onClick={()=>setPreview(true)}>Preview the surprise now ↗</button>
         </section>
       ) : (
         <section className="experience screen" key={step}>
@@ -145,7 +140,7 @@ function App() {
                   <span>✦</span>
                 </div>
               </div>
-              <p className="kicker">Hey, Aashi ❤️</p>
+              <p className="kicker">Hey, Aashi…</p>
               <h1>
                 Someone has a<br />
                 <em>surprise for you.</em>
@@ -213,15 +208,15 @@ function App() {
               </h1>
               {opened ? (
                 <div className="note">
-                  <p>Dear Aashi❤️,</p>
+                  <p>Dear Aashi,</p>
                   <p>
                     Life gave us a sister, but somewhere along the way, it also
-                    gave us a friend, a favourite person to annoy, and someone we
-                    will always root for. We may not say it every day, but we are
-                    endlessly grateful to have you in our life.
+                    gave us a friend, a favourite person to annoy, and someone
+                    we will always root for. We may not say it every day, but we
+                    are endlessly grateful to have you in our lives.
                   </p>
                   <p>
-                    We hope this year brings you beautiful opportunities,
+                    I hope this year brings you beautiful opportunities,
                     peaceful days, loud laughter, and the confidence to know how
                     wonderful you are. Whatever comes next, remember that you’ll
                     never have to face it alone. We are always here.
@@ -242,30 +237,30 @@ function App() {
           {step === 3 && (
             <div className="scene memories">
               <div className="eyebrow">
-                <Sparkles size={14} /> little moments, lots of love
+                <Sparkles size={14} /> a little gallery of you
               </div>
-              <h1>Our little memory wall</h1>
+              <h1>A little gallery of you</h1>
               <p className="intro">
-                A few snapshots for now. Swap these with your favourite photos
-                together.
+                Seven little glimpses of the person who makes our world
+                brighter. Keep being your wonderful self, Aashi. ❤️
               </p>
               <div className="photo-grid">
-                {[1, 2, 3, 4].map((n) => (
-                  <figure className={`photo-card photo-${n}`} key={n}>
+                {[
+                  "Our beautiful Aashi ❤️",
+                  "Always our shining star ✨",
+                  "A smile that lights up everything",
+                  "Simply gorgeous 🌸",
+                  "Our favourite person 💗",
+                  "Keep blooming, Aashi 🌷",
+                  "Forever loved, always cherished ❤️",
+                ].map((caption, i) => (
+                  <figure className={`photo-card photo-${i + 1}`} key={i}>
                     <img
-                      src={`https://picsum.photos/seed/aashi-sibling-${n}/600/760`}
-                      alt={`Replaceable sample memory ${n}`}
+                      src={`/photos/${i + 1}.jpeg`}
+                      alt={`Ashika's portrait ${i + 1}`}
+                      loading="lazy"
                     />
-                    <figcaption>
-                      {
-                        [
-                          "The silly moments",
-                          "Favourite memories",
-                          "Always in my corner",
-                          "More memories to make",
-                        ][n - 1]
-                      }
-                    </figcaption>
+                    <figcaption>{caption}</figcaption>
                   </figure>
                 ))}
               </div>
@@ -308,7 +303,7 @@ function App() {
               </h1>
               <p className="intro">
                 No matter how much we grow up, you’ll always have a special
-                place in our heart. We are so lucky that we got u as our sister. ❤️
+                place in our hearts. We are so lucky you’re our sister. ❤️
               </p>
               <div className="signature">Made with love, just for you ✿</div>
               <button
